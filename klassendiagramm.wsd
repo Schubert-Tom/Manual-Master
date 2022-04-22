@@ -1,0 +1,5 @@
+@startuml TEST
+left to right direction
+!includeurl https://raw.githubusercontent.com/matthewjosephtaylor/plantuml-style/master/style.pu
+A -> B : TEST
+@enduml

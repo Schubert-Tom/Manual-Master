@@ -1,5 +1,7 @@
 @startuml TEST
-left to right direction
+'left to right direction
+skinparam linetype polyline
+hide circle
 !includeurl https://raw.githubusercontent.com/matthewjosephtaylor/plantuml-style/master/style.pu
 
 ' Class Definitions
@@ -8,13 +10,13 @@ class Produkt {
   gesperrt
 }
 
-class Produktmenge << (S,#FF7700) Singleton >> {
+class Produktmenge << singleton >> {
 }
-note top of Produktmenge : Klasse als Singelton implementieren
+note top of Produktmenge : Klasse als Singleton implementieren
 class Anleitung {
     Abweisungsgrund
 }
-abstract class Benutzer {
+class Benutzer as "Benutzer \n{abstract}" {
    benutername
    e-mail
    klarname
@@ -43,9 +45,10 @@ class Admin {
     benutzerPflegen()
     benutzerAnlegen()
     sprachLandKombinationPflegen()
+    länderSprachenÜbersetzernZuordnen()
     produktLöschen()
     übersetzungLöschen()
-    BerichtAnfordern()
+    berichtAnfordern()
 }
 class Produktmanager {
     produktErstellen()
@@ -66,7 +69,7 @@ class Mehrproduktuser {
 class Bericht {
    Aktivitäten
 }
-enum Status {
+class Status << enumeration >> {
    offen
    zurückgewiesen
    fachlich geprüft
@@ -84,27 +87,27 @@ Mehrproduktuser <|-- Übsersetzer
 Mehrproduktuser <|-- Admin
 Mehrproduktuser <|-- Produktmanager
 'Assoziationen
-Benutzer "0..*" -- "1..*" Rolle : besitzt >
+Benutzer "0..*" -right- "1..*" Rolle : besitzt >
 
-Kombination "0..*" -- "1" Admin : < besitzt
-Kombination "0..*" -- "1" Übersetzer : < pflegt
-Kombination "0..1" -- "1" Land 
-Kombination "0..1" -- "1" Sprache
-Kombination "1" -- "0..1" Anleitung
+Kombination "0..*  " -- "1" Admin : < pflegt
+Kombination "0..*  " -- "0..*" Übersetzer
+Kombination "1" -- "0..1\t" Anleitung
+
+Land "1" -- "0..*\n" Kombination 
+Sprache "1" -- "0..*  " Kombination
 
 Anleitung "1" -- "1" Status
 
-Produktmenge "1" -- "0..*" Produkt 
-Produktmenge "0..1" -- "1..*" Mehrproduktuser 
+Produktmenge "1" -- "0..*  " Produkt 
+Produktmenge "0..1   " -- "1..*  " Mehrproduktuser 
 
-Produkt "1" -- "0..*" Anleitung 
-Produkt "0..1" -- "1..*" Fachpprüfer
-Produkt "0..1" -- "1..*" Land
+Produkt "1" -- " 0..*\r\n" Anleitung 
+Produkt "0..1  " -- "1..*" Fachprüfer
+Produkt "0..1" -- "1..*  " Land
 
 Sprache "0..*" -- "0..1" Sprachprüfer
 
 ' Assoziationsklasse
-(Produkt, Fachprüfer) .. Bericht
+Bericht .. (Produkt, Fachprüfer)
 (Mehrproduktuser, Produktmenge) .. Bericht
-
 @enduml

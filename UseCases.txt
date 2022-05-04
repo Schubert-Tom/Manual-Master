@@ -1,0 +1,21 @@
+Rollen:
+Benutzer (Übergeordnet)
+	Anmelden (include?)
+Produktmanager
+	Pflege von Ländern und Sprachen mit Zuordnungen
+	Anzeigen lassen
+	Produkt sperren / entsperren
+Administrator
+	Benutzer pflegen
+	Produktbericht erzeugen
+	Übersetzungen löschen
+	Produkt sperren
+Übersetzer
+	Anleitungen hochladen
+	Anzeigen lassen (filtern)
+Sprachprüfer
+	sprachlich Freigeben / zurückweisen
+	Anzeigen lassen (filtern)
+Fachprüfer
+	fachlich Freigeben / zurückweisen
+	Anzeigen lassen (filtern)

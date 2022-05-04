@@ -1,0 +1,101 @@
+@startuml Objektdiagramm
+!includeurl https://raw.githubusercontent.com/matthewjosephtaylor/plantuml-style/master/style.pu
+object "<u>Siggi:Benutzer" as Siggi{
+    benutzername = "Siggi"
+    e-mail = ""
+    klarname = ""
+    kennwort= ""
+}
+object "<u>Alfred:Benutzer" as Alfred{
+    benutzername = "Alfred"
+    e-mail = ""
+    klarname = ""
+    kennwort= ""
+}
+object "<u>Rolle:Sprachprüfer" as Sprachprüfer{
+    
+}
+object "<u>Rolle:Admin" as Admin{
+    
+}
+
+object "<u>Bestand:Produktmenge" as Produktmenge
+object "<u>Smart Toaster:Produkt" as SmartToaster{
+    Name=Smart Toaster
+    gesperrt=false
+}
+object "<u>:Status" as Status1{
+    sprachlich geprüft
+}
+object "<u>:Status" as Status2{
+    zurückgewiesen
+}
+
+object "<u>deutschland:Land" as Deutschland{
+    Kurzform = "DE"
+}
+object "<u>luxemburg:Land" as Luxemburg{
+    Kurzform = "LU"
+}
+object "<u>deutsch:Sprache" as de{
+    Kurzform = "de"
+}
+object "<u>luxemburgisch:Sprache" as lu{
+    Kurzform = "lu"
+}
+object "<u>DE_de:Kombination" as DE_de
+object "<u>LU_de:Kombination" as LU_de
+object "<u>Anleitung_DE_de:Anleitung" as Anleitung_DE_de
+object "<u>Anleitung_DE_de:Anleitung" as Anleitung_LU_de
+
+object "<u>:Abweisung" as Abweisungsgrund1{
+    Grund = "Grammatik fehlerhaft"
+    Type = "sprachlich"
+}
+object "<u>:Abweisung" as Abweisungsgrund2{
+    Grund = "Fehlerbehebungsbeschreibungen unvollständig"
+    Type = "fachlich"
+}
+
+
+' Links
+    ' Kombinationen
+    DE_de -- de
+    DE_de -- Deutschland
+
+    LU_de -- lu
+    LU_de -- Luxemburg
+    ' Produkte
+    Produktmenge -- SmartToaster
+    SmartToaster -- Deutschland
+    SmartToaster -- Luxemburg
+    SmartToaster -- Anleitung_DE_de
+    SmartToaster -- Anleitung_LU_de
+    
+    ' Admin
+    Alfred -- Admin
+    Alfred -- DE_de
+    Alfred -- LU_de
+
+    ' Sprachprüfer
+    Siggi -- Sprachprüfer
+    Siggi -- de
+
+    ' Anleitung Anleitung_DE_de
+    Anleitung_DE_de -- Status1
+
+    ' Anleitung Anleitung_LU_de
+    Anleitung_LU_de -- Status2
+    Anleitung_LU_de -- Abweisungsgrund1
+    Anleitung_LU_de -- Abweisungsgrund2
+
+@enduml
+
+
+' Fragen
+' Wenn zurückgewiesen, dann egal ob sprachlich oder fachlich?
+' Am Beispieltag wird doppelt zurückgewiesen also sprachlich und fachlich
+' Wie sieht das im Zustandsdiagramm aus --> Muss Zusatnd ändern aber darf aus den zwei Zuständen nicht mehr raus --> nie wieder freigeben
+
+
+' Ulrich auch modellieren, weil er die Übersetzungen hochgeladen hat??

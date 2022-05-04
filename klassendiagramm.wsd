@@ -1,4 +1,4 @@
-@startuml TEST
+@startuml Klassendiagramm
 'left to right direction
 skinparam linetype polyline
 hide circle
@@ -13,9 +13,7 @@ class Produkt {
 class Produktmenge << singleton >> {
 }
 note top of Produktmenge : Klasse als Singleton implementieren
-class Anleitung {
-    Abweisungsgrund
-}
+class Anleitung
 class Benutzer as "Benutzer \n{abstract}" {
    benutername
    e-mail
@@ -72,11 +70,14 @@ class Bericht {
 class Status << enumeration >> {
    offen
    zurückgewiesen
-   fachlich geprüft
    sprachlich geprüft
+   fachlich geprüft
    final
 }
-
+class Abweisungsgrund {
+    Grund
+    Type
+}
 'Vererbung
 Rolle <|-- Fachprüfer
 Rolle <|-- Mehrproduktuser
@@ -96,7 +97,8 @@ Kombination "1" -- "0..1\t" Anleitung
 Land "1" -- "0..*\n" Kombination 
 Sprache "1" -- "0..*  " Kombination
 
-Anleitung "1" -- "1" Status
+Anleitung "1  " -- "1" Status
+Anleitung "1" -- "0..2  " Abweisungsgrund
 
 Produktmenge "1" -- "0..*  " Produkt 
 Produktmenge "0..1   " -- "1..*  " Mehrproduktuser 

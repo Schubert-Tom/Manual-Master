@@ -100,11 +100,11 @@ Sprache "1" -- "0..*  " Kombination
 Anleitung "1  " -- "1" Status
 Anleitung "1" -- "0..2  " Abweisungsgrund
 
-Produktmenge "1" -- "0..*  " Produkt 
-Produktmenge "0..1   " -- "1..*  " Mehrproduktuser 
+Produktmenge "1" -- "0..*   " Produkt 
+Produktmenge "0..1    " -- "1..*   " Mehrproduktuser 
 
 Produkt "1" -- " 0..*\r\n" Anleitung 
-Produkt "0..1  " -- "1..*" Fachprüfer
+Produkt "0..1  " -- "\n 1..*" Fachprüfer
 Produkt "0..1" -- "1..*  " Land
 
 Sprache "0..*" -- "0..1" Sprachprüfer

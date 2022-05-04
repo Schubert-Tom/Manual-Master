@@ -14,7 +14,7 @@ class Produktmenge << singleton >> {
 }
 note top of Produktmenge : Klasse als Singleton implementieren
 class Anleitung
-class Benutzer as "Benutzer \n{abstract}" {
+class Benutzer {
    benutername
    e-mail
    klarname
@@ -22,7 +22,7 @@ class Benutzer as "Benutzer \n{abstract}" {
 
    login()
 }
-class Rolle {
+class Rolle as "Rolle \n{abstract}"{
 }
 class Fachprüfer {
     anleitungFreigeben()
@@ -62,7 +62,7 @@ class Sprache {
 }
 class Kombination {
 }
-class Mehrproduktuser {
+class Mehrproduktuser as "Mehrproduktuser \n{abstract}" {
 }
 class Bericht {
    Aktivitäten
@@ -90,24 +90,24 @@ Mehrproduktuser <|-- Produktmanager
 'Assoziationen
 Benutzer "0..*" -right- "1..*" Rolle : besitzt >
 
-Kombination "0..*  " -- "1" Admin : < pflegt
+Kombination "0..*    " -- "1" Admin : < pflegt
 Kombination "0..*  " -- "0..*" Übersetzer
 Kombination "1" -- "0..1\t" Anleitung
 
-Land "1" -- "0..*\n" Kombination 
+Land "1  " -- "  0..*" Kombination 
 Sprache "1" -- "0..*  " Kombination
 
 Anleitung "1  " -- "1" Status
 Anleitung "1" -- "0..2  " Abweisungsgrund
 
-Produktmenge "1" -- "0..*  " Produkt 
-Produktmenge "0..1   " -- "1..*  " Mehrproduktuser 
+Produktmenge "1" -- "0..*   " Produkt 
+Produktmenge "   0..1    " -- "1..*" Mehrproduktuser 
 
 Produkt "1" -- " 0..*\r\n" Anleitung 
-Produkt "0..1  " -- "1..*" Fachprüfer
-Produkt "0..1" -- "1..*  " Land
+Fachprüfer "0..1  " -- "1..*  " Produkt
+Produkt "0..*" -- "1..*  " Land
 
-Sprache "0..*" -- "0..1" Sprachprüfer
+Sprache "0..*  " -- "0..*" Sprachprüfer
 
 ' Assoziationsklasse
 Bericht .. (Produkt, Fachprüfer)

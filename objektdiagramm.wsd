@@ -93,9 +93,6 @@ object "<u>:Abweisung" as Abweisungsgrund2{
 
 
 ' Fragen
-' Wenn zurückgewiesen, dann egal ob sprachlich oder fachlich?
-' Am Beispieltag wird doppelt zurückgewiesen also sprachlich und fachlich
-' Wie sieht das im Zustandsdiagramm aus --> Muss Zusatnd ändern aber darf aus den zwei Zuständen nicht mehr raus --> nie wieder freigeben
 
 
 ' Ulrich auch modellieren, weil er die Übersetzungen hochgeladen hat??

@@ -53,6 +53,8 @@ class Produktmanager {
     produktBearbeiten()
     produktSperren()
     produktFreigeben()
+    fehlendeAnleitungenAnschauen()
+    freigabestatusAnschauen()
 }
 class Land {
     Kurzform

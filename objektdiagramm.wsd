@@ -46,7 +46,7 @@ object "<u>luxemburgisch:Sprache" as lu{
 object "<u>DE_de:Kombination" as DE_de
 object "<u>LU_de:Kombination" as LU_de
 object "<u>Anleitung_DE_de:Anleitung" as Anleitung_DE_de
-object "<u>Anleitung_DE_de:Anleitung" as Anleitung_LU_de
+object "<u>Anleitung_LU_de:Anleitung" as Anleitung_LU_de
 
 object "<u>:Abweisung" as Abweisungsgrund1{
     Grund = "Grammatik fehlerhaft"

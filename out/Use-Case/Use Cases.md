@@ -35,10 +35,10 @@
   Produkt sperren
      Ein Benuter, dem die Rolle Produktmanager zugeordnet ist, kann von ihm gesperrte Produkte, wieder entsperren
   
-  fehlendeAnleitungenanschauen 
+  fehlende Anleitungen anschauen 
     Ein Benuter, dem die Rolle Produktmanager zugeordnet ist, kann im System anzeigen lassen, für welche Produkte noch jeweils welche Anleitungen fehlen
 
-  freigabestatusanschauen
+  Freigabestatus anschauen
     Ein Benutzer, dem die Rolle Produktmanager zugeordnet ist, kann anzeigen lassen für welche Anleitungen der jeweilligen Produkte jeweils welcher Freigabestatus vorliegt
 
 

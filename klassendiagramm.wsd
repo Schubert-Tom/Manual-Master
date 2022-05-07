@@ -15,7 +15,7 @@ class Produktmenge << singleton >> {
 note top of Produktmenge : Klasse als Singleton implementieren
 class Anleitung
 class Benutzer {
-   benutername
+   benutzername
    e-mail
    klarname
    kennwort

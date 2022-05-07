@@ -15,7 +15,7 @@ class Produktmenge << singleton >> {
 note top of Produktmenge : Klasse als Singleton implementieren
 class Anleitung
 class Benutzer {
-   benutername
+   benutzername
    e-mail
    klarname
    kennwort
@@ -26,18 +26,19 @@ class Rolle as "Rolle \n{abstract}"{
 }
 class Fachprüfer {
     anleitungFreigeben()
-    anleitungSperren()
+    freizugebendeAnleitungenAnzeigen()
+    anleitungZurückweisen()
 }
 class Sprachprüfer {
-    übersetzungFreigeben()
+    anleitungFreigeben()
     freizugebendeAnleitungenAnzeigen()
-    übersetzungSperren()
+    anleitungZurückweisen()
 }
-class Übsersetzer {
-    übersetzungHochladen()
-    vorhandeneÜbersetzungenAnzeigen()
-    fehlendeÜbersetzungenAnzeigen()
-    abgelehnteÜbersetzungenAnzeigen()
+class Übersetzer {
+    anleitungHochladen()
+    vorhandeneAnleitungenAnzeigen()
+    fehlendeAnleitungenAnzeigen()
+    abgelehnteAnleitungenAnzeigen()
 }
 class Admin {
     benutzerPflegen()
@@ -45,14 +46,16 @@ class Admin {
     sprachLandKombinationPflegen()
     länderSprachenÜbersetzernZuordnen()
     produktLöschen()
-    übersetzungLöschen()
+    anleitungLöschen()
     berichtAnfordern()
 }
 class Produktmanager {
     produktErstellen()
     produktBearbeiten()
     produktSperren()
-    produktFreigeben()
+    produktEntsperren()
+    fehlendeAnleitungenAnschauen()
+    freigabestatusAnschauen()
 }
 class Land {
     Kurzform
@@ -64,6 +67,7 @@ class Kombination {
 }
 class Mehrproduktuser as "Mehrproduktuser \n{abstract}" {
 }
+note left of Mehrproduktuser : Diese Klasse kann mit der \ngesamten Produktmenge interagieren
 class Bericht {
    Aktivitäten
 }
@@ -84,28 +88,31 @@ Rolle <|-- Mehrproduktuser
 
 
 Mehrproduktuser <|-- Sprachprüfer
-Mehrproduktuser <|-- Übsersetzer
+Mehrproduktuser <|-- Übersetzer
+Produktmanager -up-|> Mehrproduktuser
 Mehrproduktuser <|-- Admin
-Mehrproduktuser <|-- Produktmanager
+
 'Assoziationen
 Benutzer "0..*" -right- "1..*" Rolle : besitzt >
 
-Kombination "0..*    " -- "1" Admin : < pflegt
+Produktmanager -[hidden]- Admin
+
+Kombination "0..*   " -left- "1" Admin : < pflegt
 Kombination "0..*  " -- "0..*" Übersetzer
 Kombination "1" -- "0..1\t" Anleitung
 
-Land "1  " -- "  0..*" Kombination 
+Land "1  " -left- "  0..*" Kombination 
 Sprache "1" -- "0..*  " Kombination
 
 Anleitung "1  " -- "1" Status
 Anleitung "1" -- "0..2  " Abweisungsgrund
 
-Produktmenge "1" -- "0..*   " Produkt 
+Produktmenge "1" -- "0..*     " Produkt 
 Produktmenge "   0..1    " -- "1..*" Mehrproduktuser 
 
-Produkt "1" -- " 0..*\r\n" Anleitung 
-Fachprüfer "0..1  " -- "1..*  " Produkt
-Produkt "0..*" -- "1..*  " Land
+Produkt "\n1   " -- " 0..*" Anleitung 
+Fachprüfer "0..*" -- "0..1" Produkt
+Produkt "  0..*" ---- "1..* " Land
 
 Sprache "0..*  " -- "0..*" Sprachprüfer
 

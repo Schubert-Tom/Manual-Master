@@ -1,58 +1,58 @@
 @startuml Objektdiagramm
 !includeurl https://raw.githubusercontent.com/matthewjosephtaylor/plantuml-style/master/style.pu
-object "<u>Siggi:Benutzer" as Siggi{
+object "<u>Siggi: Benutzer" as Siggi{
     benutzername = "Siggi"
     e-mail = ""
     klarname = ""
     kennwort= ""
 }
-object "<u>Alfred:Benutzer" as Alfred{
+object "<u>Alfred: Benutzer" as Alfred{
     benutzername = "Alfred"
     e-mail = ""
     klarname = ""
     kennwort= ""
 }
-object "<u>Rolle:Sprachprüfer" as Sprachprüfer{
+object "<u>Rolle: Sprachprüfer" as Sprachprüfer{
     
 }
 object "<u>Rolle:Admin" as Admin{
     
 }
 
-object "<u>Bestand:Produktmenge" as Produktmenge
-object "<u>Smart Toaster:Produkt" as SmartToaster{
+object "<u>Bestand: Produktmenge" as Produktmenge
+object "<u>Smart Toaster: Produkt" as SmartToaster{
     Name=Smart Toaster
     gesperrt=false
 }
-object "<u>:Status" as Status1{
+object "<u>: Status" as Status1{
     sprachlich geprüft
 }
-object "<u>:Status" as Status2{
+object "<u>: Status" as Status2{
     zurückgewiesen
 }
 
-object "<u>deutschland:Land" as Deutschland{
+object "<u>deutschland: Land" as Deutschland{
     Kurzform = "DE"
 }
-object "<u>luxemburg:Land" as Luxemburg{
+object "<u>luxemburg: Land" as Luxemburg{
     Kurzform = "LU"
 }
-object "<u>deutsch:Sprache" as de{
+object "<u>deutsch: Sprache" as de{
     Kurzform = "de"
 }
-object "<u>luxemburgisch:Sprache" as lu{
+object "<u>luxemburgisch: Sprache" as lu{
     Kurzform = "lu"
 }
-object "<u>DE_de:Kombination" as DE_de
-object "<u>LU_de:Kombination" as LU_de
-object "<u>Anleitung_DE_de:Anleitung" as Anleitung_DE_de
-object "<u>Anleitung_LU_de:Anleitung" as Anleitung_LU_de
+object "<u>DE_de: Kombination" as DE_de
+object "<u>LU_de: Kombination" as LU_de
+object "<u>Anleitung_DE_de: Anleitung" as Anleitung_DE_de
+object "<u>Anleitung_LU_de: Anleitung" as Anleitung_LU_de
 
-object "<u>:Abweisung" as Abweisungsgrund1{
+object "<u>: Abweisung" as Abweisungsgrund1{
     Grund = "Grammatik fehlerhaft"
     Type = "sprachlich"
 }
-object "<u>:Abweisung" as Abweisungsgrund2{
+object "<u>: Abweisung" as Abweisungsgrund2{
     Grund = "Fehlerbehebungsbeschreibungen unvollständig"
     Type = "fachlich"
 }

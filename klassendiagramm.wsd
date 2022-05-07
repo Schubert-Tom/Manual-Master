@@ -33,7 +33,7 @@ class Sprachprüfer {
     freizugebendeAnleitungenAnzeigen()
     anleitungZurückweisen()
 }
-class Übsersetzer {
+class Übersetzer {
     anleitungHochladen()
     vorhandeneAnleitungenAnzeigen()
     fehlendeAnleitungenAnzeigen()
@@ -86,28 +86,31 @@ Rolle <|-- Mehrproduktuser
 
 
 Mehrproduktuser <|-- Sprachprüfer
-Mehrproduktuser <|-- Übsersetzer
+Mehrproduktuser <|-- Übersetzer
+Produktmanager -up-|> Mehrproduktuser
 Mehrproduktuser <|-- Admin
-Mehrproduktuser <|-- Produktmanager
+
 'Assoziationen
 Benutzer "0..*" -right- "1..*" Rolle : besitzt >
 
-Kombination "0..*    " -- "1" Admin : < pflegt
+Produktmanager -[hidden]- Admin
+
+Kombination "0..*   " -left- "1" Admin : < pflegt
 Kombination "0..*  " -- "0..*" Übersetzer
 Kombination "1" -- "0..1\t" Anleitung
 
-Land "1  " -- "  0..*" Kombination 
+Land "1  " -left- "  0..*" Kombination 
 Sprache "1" -- "0..*  " Kombination
 
 Anleitung "1  " -- "1" Status
 Anleitung "1" -- "0..2  " Abweisungsgrund
 
-Produktmenge "1" -- "0..*   " Produkt 
+Produktmenge "1" -- "0..*     " Produkt 
 Produktmenge "   0..1    " -- "1..*" Mehrproduktuser 
 
-Produkt "1" -- " 0..*\r\n" Anleitung 
-Fachprüfer "0..1  " -- "1..*  " Produkt
-Produkt "0..*" -- "1..*  " Land
+Produkt "\n1   " -- " 0..*" Anleitung 
+Fachprüfer "0..*" -- "0..1" Produkt
+Produkt "  0..*" ---- "1..* " Land
 
 Sprache "0..*  " -- "0..*" Sprachprüfer
 

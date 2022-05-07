@@ -26,18 +26,18 @@ class Rolle as "Rolle \n{abstract}"{
 }
 class Fachprüfer {
     anleitungFreigeben()
-    anleitungSperren()
+    anleitungZurückweisen()
 }
 class Sprachprüfer {
-    übersetzungFreigeben()
+    anleitungFreigeben()
     freizugebendeAnleitungenAnzeigen()
-    übersetzungSperren()
+    anleitungZurückweisen()
 }
 class Übsersetzer {
-    übersetzungHochladen()
-    vorhandeneÜbersetzungenAnzeigen()
-    fehlendeÜbersetzungenAnzeigen()
-    abgelehnteÜbersetzungenAnzeigen()
+    anleitungHochladen()
+    vorhandeneAnleitungenAnzeigen()
+    fehlendeAnleitungenAnzeigen()
+    abgelehnteAnleitungenAnzeigen()
 }
 class Admin {
     benutzerPflegen()
@@ -45,7 +45,7 @@ class Admin {
     sprachLandKombinationPflegen()
     länderSprachenÜbersetzernZuordnen()
     produktLöschen()
-    übersetzungLöschen()
+    anleitungLöschen()
     berichtAnfordern()
 }
 class Produktmanager {

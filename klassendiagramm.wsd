@@ -26,6 +26,7 @@ class Rolle as "Rolle \n{abstract}"{
 }
 class Fachprüfer {
     anleitungFreigeben()
+    freizugebendeAnleitungenAnzeigen()
     anleitungZurückweisen()
 }
 class Sprachprüfer {
@@ -66,6 +67,7 @@ class Kombination {
 }
 class Mehrproduktuser as "Mehrproduktuser \n{abstract}" {
 }
+note left of Mehrproduktuser : Diese Klasse kann mit der \ngesamten Produktmenge interagieren
 class Bericht {
    Aktivitäten
 }
